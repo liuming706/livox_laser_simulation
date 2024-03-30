@@ -33,7 +33,7 @@ A simple demo is shown in livox_simulation.launch
 
 Run 
 ```
-    roslaunch livox_laser_simulation livox_simulation.launch
+roslaunch livox_laser_simulation livox_simulation_mid_360.launch  
 ```
 to see.
 
