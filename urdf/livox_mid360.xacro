@@ -85,9 +85,11 @@
     <joint name="${name}_to_livox_base_joint" type="fixed">
       <parent link="${name}_base"/>
       <child link="${name}"/>
-      <origin rpy="0 0 0" xyz="0.0 1.0 0.2"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.35"/>
     </joint>
+    
     <xacro:Livox_Mid_gazebo_sensor name="${name}" visualize="${visualize}"/>
+
   </xacro:macro>
     <!--xacro:Livox_Mid40 name="livox"/-->
   <!--xacro:include filename="$(find livox_laser_simulation)/urdf/standardrobots_oasis300.xacro"/>

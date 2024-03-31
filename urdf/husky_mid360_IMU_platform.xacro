@@ -1,12 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="example">
-
-
-  <!-- Base Footprint -->
-  <link name="base_link" />
-
-
-  <xacro:macro name="LivoxMid360_IMU_Plantform" params="name:=mid360_imu_plantform parent_link_name:=base_link x:=0.0 y:=0.0 z:=0.05 r:=0.0 p:=0.0 yaw:=0.0">
+  <xacro:include filename="$(find husky_description)/urdf/husky.urdf.xacro"/>
+  <xacro:macro name="LivoxMid360_IMU_Plantform" params="name:=mid360_imu_plantform parent_link_name:=base_link x:=0.0 y:=0.0 z:=0.2 r:=0.0 p:=0.0 yaw:=0.0">
       
       <joint name="${name}_joint" type="fixed" >
         <parent link="${parent_link_name}" />
@@ -119,8 +114,5 @@
       <child link="laser_livox"/>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
     </joint>
-  <!--xacro:include filename="$(find livox_laser_simulation)/urdf/standardrobots_oasis300.xacro"/-->
-  <!--xacro:link_oasis name="oasis"/-->
-
 </robot>
 
