@@ -1,4 +1,4 @@
-//
+﻿//
 // Created by lfc on 2021/2/28.
 //
 
@@ -68,7 +68,8 @@ void LivoxPointsPlugin::Load(gazebo::sensors::SensorPtr _parent,
       rosNode->advertise<livox_ros_driver2::CustomMsg>(curr_scan_topic, 5);
   raySensor = _parent;
   auto sensor_pose = raySensor->Pose();
-  SendRosTf(sensor_pose, raySensor->ParentName(), raySensor->Name());
+  // NOTE(LM): 暂时注释
+  // SendRosTf(sensor_pose, raySensor->ParentName(), raySensor->Name());
 
   node = transport::NodePtr(new transport::Node());
   node->Init(raySensor->WorldName());
@@ -125,9 +126,9 @@ void LivoxPointsPlugin::OnNewLaserScans() {
     msgs::Set(laserMsg.mutable_time(), world->SimTime());
     msgs::LaserScan *scan = laserMsg.mutable_scan();
     InitializeScan(scan);
-
-    SendRosTf(parentEntity->WorldPose(), world->Name(),
-              raySensor->ParentName());
+    // NOTE(LM): 暂时注释
+    //  SendRosTf(parentEntity->WorldPose(), world->Name(),
+    //         raySensor->ParentName());
 
     auto rayCount = RayCount();
     auto verticalRayCount = VerticalRayCount();
@@ -183,17 +184,20 @@ void LivoxPointsPlugin::OnNewLaserScans() {
     //    auto &scan_points = scan_point.points;
 
     //    for (auto &pair : points_pair) {
-    //      // int verticle_index = roundf((pair.second.zenith - verticle_min) /
-    //      // verticle_incre); int horizon_index = roundf((pair.second.azimuth
+    //      // int verticle_index = roundf((pair.second.zenith -
+    //      verticle_min) /
+    //      // verticle_incre); int horizon_index =
+    //      roundf((pair.second.azimuth
     //      -
     //      // angle_min) / angle_incre); if (verticle_index < 0 ||
     //      horizon_index < 0)
     //      // {
     //      //   continue;
     //      //}
-    //      // if (verticle_index < verticalRayCount && horizon_index <
-    //      rayCount) {
-    //      //   auto index = (verticalRayCount - verticle_index - 1) * rayCount
+    //      // if (verticle_index < verticalRayCount && horizon_index
+    //      < rayCount) {
+    //      //   auto index = (verticalRayCount - verticle_index - 1)
+    //      * rayCount
     //      +
     //      //   horizon_index;
     //      auto range = rayShape->GetRange(pair.first);
@@ -208,7 +212,8 @@ void LivoxPointsPlugin::OnNewLaserScans() {
 
     //      auto rotate_info = pair.second;
     //      ignition::math::Quaterniond ray;
-    //      ray.Euler(ignition::math::Vector3d(0.0, rotate_info.zenith,
+    //      ray.Euler(ignition::math::Vector3d(0.0,
+    //      rotate_info.zenith,
     //                                         rotate_info.azimuth));
     //      //                auto axis = rotate * ray *
     //      ignition::math::Vector3d(1.0,
@@ -223,16 +228,18 @@ void LivoxPointsPlugin::OnNewLaserScans() {
     //      scan_points.back().z = point.Z();
     //      //} else {
 
-    //      //    //                ROS_INFO_STREAM("count is wrong:" <<
+    //      //    //                ROS_INFO_STREAM("count is wrong:"
+    //      <<
     //      //    verticle_index << "," << verticalRayCount << ","
     //      //    //                << horizon_index
-    //      //    //                          << "," << rayCount << "," <<
+    //      //    //                          << "," << rayCount <<
+    //      "," <<
     //      //    pair.second.zenith << "," <<
     //      //    //                          pair.second.azimuth);
     //      //}
     //    }
-    //    if (scanPub && scanPub->HasConnections()) scanPub->Publish(laserMsg);
-    //    rosPointPub.publish(scan_point);
+    //    if (scanPub && scanPub->HasConnections())
+    //    scanPub->Publish(laserMsg); rosPointPub.publish(scan_point);
     customMsgPub.publish(pp_livox);
     ros::spinOnce();
   }

@@ -101,18 +101,18 @@
   </xacro:macro>
 
   <xacro:LivoxMid360_IMU_Plantform name="mid360_imu_plantform"/>
-  <link name="example::base_link" />
-  <link name="laser_livox" />
-    <joint name="base_link_to_example_base_link_joint" type="fixed">
+  <!--link name="example::base_link" /-->
+  <!--link name="laser_livox" /-->
+    <!--joint name="base_link_to_example_base_link_joint" type="fixed">
       <parent link="base_link"/>
       <child link="example::base_link"/>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-    </joint>
+    </joint-->
     
-    <joint name="base_link_to_laser_livox_joint" type="fixed">
+    <!--joint name="base_link_to_laser_livox_joint" type="fixed">
       <parent link="base_link"/>
       <child link="laser_livox"/>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-    </joint>
+    </joint-->
 </robot>
 
